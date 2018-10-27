@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ja">
+{{ partial "aa.html" (dict "aanumber" "01") }}
+{{ partial "head.html" . }}
+<body>
+
+<div class="sec-wrap" id="wrap">
+{{ partial "header.html" (dict "pageLevel" "top") }}
+<div class="topname">
+    <p class="name">SHINOBU TANAKA</p>
+    <p class="copy">Designer based in Tokyo</p>
+</div>
+<section class="sec-main">
+<ul id="workList" class="workList">
+    {{ $paginator := .Paginate (where .Data.Pages "Type" "works") }}
+    {{ range $paginator.Pages }}
+        <li class="workItem fadein">
+            <article class="itemCont">
+                <a href="{{ .Permalink }}">
+                    <p class="workThumb"><img src="{{ .Permalink }}{{ with .Params.thumb }}{{ . }}{{ end }}"></p>
+                    <h2 class="workTitle">{{ .Title }}</h2>
+                </a>
+                <ul class="tagList">
+                    {{ with .Params.tags }}{{ range . }}<li class="tag" data-filter="{{ . }}">{{ . }}</li>{{ end }}{{ end }}
+                </ul>
+            </article>
+        </li>
+    {{ end }}
+</ul>
+</section>
+</div>
+{{ partial "footer.html" . }}
+</body>
+{{ partial "aa.html" (dict "aanumber" "02") }}
+</html>

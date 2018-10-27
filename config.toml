@@ -1,7 +1,9 @@
 baseURL = "https://shinobu.work/"
 languageCode = "jp"
-title = "Shinobu Tanaka"
+title = "Shinobu Tanaka | 田中 忍"
 
 [Params]
-description = "Shinobu Tanaka's portfolio site. Please make yourself at home."
+description = "田中 忍のポートフォリオ。"
+keywords = "shinobu,tanaka,忍,田中,designer,デザイナー"
 analytics = "UA-127841661-1"
+ogp= "assets/img/ogp.png"

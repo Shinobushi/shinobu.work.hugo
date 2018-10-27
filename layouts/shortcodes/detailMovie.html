@@ -1,0 +1,15 @@
+{{ $movie_type := .Get "movie_type" }}
+{{ $movie_id := .Get "movie_id" }}
+
+<div class="detailMovie fadein">
+
+{{ if eq $movie_type "youtube" }}
+<!-- YouTubeの埋め込み -->
+<iframe src="//www.youtube.com/embed/{{ $movie_id }}?rel=0&showinfo=0&autohide=1" frameborder="0" allowfullscreen></iframe>
+
+{{ else if eq $movie_type "vimeo" }}
+<!-- Vimeoの埋め込み -->
+<iframe src="//player.vimeo.com/video/{{ $movie_id }}" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+
+{{ end }}
+</div>

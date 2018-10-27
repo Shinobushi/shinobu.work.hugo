@@ -1,0 +1,55 @@
+<head>
+<!-- Global Site Tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id={{ .Site.Params.Analytics }}"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', '{{ .Site.Params.Analytics }}');
+</script>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="/assets/favicon.ico" type="image/x-icon">
+
+{{ if eq .IsPage "false" }}
+<title>{{ .Site.Title }}</title>
+<meta name="keywords" content="{{ .Site.Params.Keywords }}">
+<meta name="description" content="{{ .Site.Params.Description }}">
+
+<meta property="og:url" content="{{ .Permalink }}">
+<meta property="og:type" content="website">
+<meta property="og:title" content="{{ .Site.Title }}">
+<meta property="og:description" content="{{ .Site.Params.Description }}">
+<meta property="og:site_name" content="{{ .Site.Title }}">
+<meta property="og:image" content="{{ .Site.Params.Ogp }}">
+
+{{ else }}
+
+<title>{{ .Title }} | {{ .Site.Title }}</title>
+<meta name="keywords" content="{{ .Site.Params.Keywords }}">
+<meta name="description" content="{{ .Description }}">
+
+<meta property="og:url" content="{{ .Permalink }}">
+<meta property="og:type" content="article">
+<meta property="og:title" content="{{ .Title }} | {{ .Site.Title }}">
+<meta property="og:description" content="{{ .Description }}">
+<meta property="og:site_name" content="{{ .Site.Title }}">
+
+{{ if .Page.Params.Thumb }}
+<meta property="og:image" content="{{ .Permalink }}{{ .Page.Params.Thumb }}">
+{{ else }}
+<meta property="og:image" content="{{ .Site.Params.Ogp }}">
+{{ end }}
+{{ end }}
+
+
+{{ $style := resources.Get "assets/css/main.scss" | toCSS | minify | fingerprint }}
+<link rel="stylesheet" href="{{ $style.Permalink }}">
+
+<script type="text/javascript" src="/assets/js/library/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="/assets/js/library/jquery.inview.min.js"></script>
+<script type="text/javascript" src="/assets/js/base.js"></script>
+
+</head>

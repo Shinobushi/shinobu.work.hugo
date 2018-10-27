@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ja">
+{{ partial "head.html" . }}
+<body>
+<div class="sec-wrap" id="wrap">
+{{ partial "header.html" (dict "pageLevel" "about") }}
+<section class="sec-main">
+    <div class="aboutCont">
+        <dl class="aboutBox">
+            <dd class="aboutImg"><img src="https://placehold.jp/560x270.png"></dd>
+            <dt class="aboutName">Shinobu Tanaka</dt>
+            <dd class="aboutJob">Designer</dd>
+            <dd class="aboutTxt">多摩美術大学情報デザイン学科を卒業後、株式会社LIFULLに所属。</dd>
+            <dd class="aboutHistory">
+                <ul>
+                    
+                    {{ range .Page.Params.History }}
+                    <li><span class="date">{{ .date }}</span><a href="{{ .url }}" target="_blank">{{ .topic }}</a></li>
+                    {{ end }}
+
+                </ul>
+        </dl>
+        <p class="address">mail@shinobu.work</p> 
+    </div>
+</section>
+</div>
+{{ partial "footer.html" . }}
+</body>
+</html>

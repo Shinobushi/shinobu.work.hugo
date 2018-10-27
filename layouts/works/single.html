@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ja">
+{{ partial "head.html" . }}
+<body>
+<div class="sec-wrap" id="wrap">
+{{ partial "header.html" (dict "pageLevel" "works") }}
+<section class="sec-main">
+    <div class="workDetail">
+        <div class="detailTitle">
+            <h1 class="title">{{ .Title }}</h1>
+            <ul class="tagList">
+                {{ with .Params.tags }}{{ range . }}<li class="tag" data-filter="{{ . }}">{{ . }}</li>{{ end }}{{ end }}
+            </ul>
+        </div>
+        {{ .Content }}
+    </div>
+</section>
+</div>
+{{ partial "footer.html" . }}
+</body>
+</html>
